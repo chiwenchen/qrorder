@@ -1,0 +1,7 @@
+<%= @restaurant.name %>'s Table <%= @table.number %>
+<hr>
+<% @restaurant.manus.each do |manu| %>
+  <%= manu.dish_name %>
+  <%= button_to 'Order this meal', order_table_path(@table, manu: 1), method: 'post' %>
+  <br>
+<% end %>

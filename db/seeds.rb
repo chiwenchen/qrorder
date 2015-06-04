@@ -10,17 +10,27 @@ asia_food = Restaurant.create(name: 'Asian Food')
 salad = Restaurant.create(name: 'Happy Salad')
 
 thai_fish = Manu.create(
-    dish_name: 'Thai Fish', 
-    description: 'very spicy fish', 
-    restaurant: asia_food)
+  dish_name: 'Thai Fish', 
+  description: 'very spicy fish', 
+  restaurant: asia_food)
 
 fried_shrimp = Manu.create(
-    dish_name: 'Fried Shrimp', 
-    description: 'very crippy shrimp', 
-    restaurant: asia_food)
+  dish_name: 'Fried Shrimp', 
+  description: 'very crippy shrimp', 
+  restaurant: asia_food)
 
 veg_salad = Manu.create(
-    dish_name: 'Vegetarian Salad', 
-    description: 'super fresh salad for morning', 
-    restaurant: salad)
+  dish_name: 'Vegetarian Salad', 
+  description: 'super fresh salad for morning', 
+  restaurant: salad)
+
+TB1 = Table.create(
+  restaurant: asia_food,
+  number: 1,
+  )
+
+TB2 = Table.create(
+  restaurant: asia_food,
+  number: 2,
+  )
 
