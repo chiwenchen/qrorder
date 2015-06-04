@@ -1,2 +1,9 @@
 <h2><%= @restaurant.name %></h2>
 
+<% @restaurant.manus.each do |manu| %>
+  Dish: <strong><%= manu.dish_name %></strong>
+  <br>
+  Description: <%= manu.description %>
+  <hr>
+
+<% end %>

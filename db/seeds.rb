@@ -6,4 +6,21 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-happ_food = Restaurant.create(name: 'Happy Food')
+asia_food = Restaurant.create(name: 'Asian Food')
+salad = Restaurant.create(name: 'Happy Salad')
+
+thai_fish = Manu.create(
+    dish_name: 'Thai Fish', 
+    description: 'very spicy fish', 
+    restaurant: asia_food)
+
+fried_shrimp = Manu.create(
+    dish_name: 'Fried Shrimp', 
+    description: 'very crippy shrimp', 
+    restaurant: asia_food)
+
+veg_salad = Manu.create(
+    dish_name: 'Vegetarian Salad', 
+    description: 'super fresh salad for morning', 
+    restaurant: salad)
+
