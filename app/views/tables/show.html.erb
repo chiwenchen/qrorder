@@ -2,6 +2,8 @@
 <hr>
 <% @restaurant.manus.each do |manu| %>
   <%= manu.dish_name %>
-  <%= button_to 'Order this meal', order_table_path(@table, manu: 1), method: 'post' %>
+  <%= button_to 'Order this meal', order_table_path(@table, manu: manu.id, selection: true), method: 'post' %>
+  <%= button_to 'Cancel the order', order_table_path(@table, manu: manu.id, selection: false), method: 'post' %>
+  <%= @order.where(manu: manu).total %>
   <br>
 <% end %>

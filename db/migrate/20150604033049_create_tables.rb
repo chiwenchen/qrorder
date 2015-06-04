@@ -6,7 +6,7 @@ class CreateTables < ActiveRecord::Migration
       t.integer :number
     end
 
-    create_table :order do |t|
+    create_table :orders do |t|
       t.integer :manu_id
       t.integer :table_id
     end
