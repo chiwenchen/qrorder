@@ -4,6 +4,13 @@
   <%= manu.dish_name %>
   <%= button_to 'Order this meal', order_table_path(@table, manu: manu.id, selection: true), method: 'post' %>
   <%= button_to 'Cancel the order', order_table_path(@table, manu: manu.id, selection: false), method: 'post' %>
-  <%= @order.where(manu: manu).total %>
+  <%= 
+    total_order = @order.where(manu: manu, selection: true).size - @order.where(manu: manu, selection: false).size
+    if total_order >= 0
+      total_order 
+    else
+      0
+    end
+  %>
   <br>
 <% end %>

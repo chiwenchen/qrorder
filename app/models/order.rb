@@ -5,6 +5,7 @@ class Order < ActiveRecord::Base
 
   def total
     #some calculation
+    binding.pry
   end
 
 end
