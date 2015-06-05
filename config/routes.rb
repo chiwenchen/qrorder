@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'restaurants#index'
 
   resources :restaurants, only: [:index, :show] do
-    resources :manus, only: [:index];
+    resources :manus, only: [:index, :new, :create];
     resources :tables, only: [:show];
   end 
 
@@ -12,7 +12,5 @@ Rails.application.routes.draw do
       post :order 
     end
   end
-
-
 
 end

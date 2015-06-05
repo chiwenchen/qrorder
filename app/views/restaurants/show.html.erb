@@ -1,6 +1,7 @@
 <h2><%= @restaurant.name %></h2>
 
 <h3>Manu</h3>
+<%= link_to 'New Manu', new_restaurant_manu_path(@restaurant), class: 'btn' %>
 <% @restaurant.manus.each do |manu| %>
   Dish: <strong><%= manu.dish_name %></strong>
   <br>
