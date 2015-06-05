@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150604112036) do
 
-  create_table "manus", force: :cascade do |t|
+  create_table "menus", force: :cascade do |t|
     t.string   "dish_name"
     t.string   "description"
     t.string   "photo"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150604112036) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "manu_id"
+    t.integer "menu_id"
     t.integer "table_id"
     t.boolean "selection"
   end

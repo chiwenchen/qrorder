@@ -1,5 +1,5 @@
 class Table < ActiveRecord::Base
   has_many :orders
-  has_many :manus, through: :orders
+  has_many :menus, through: :orders
   belongs_to :restaurant
 end
