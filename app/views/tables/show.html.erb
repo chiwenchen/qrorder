@@ -2,16 +2,10 @@
 <hr>
 <% @restaurant.menus.each do |menu| %>
   <%= menu.dish_name %>
-  <%= button_to 'Order this meal', order_table_path(@table, menu: manu.id, selection: true), method: 'post' %>
-  <%= button_to 'Cancel the order', order_table_path(@table, menu: manu.id, selection: false), method: 'post' %>
-
-  <%= 
-    total_order = @order.where(menu: manu, selection: true).size - @order.where(menu: manu, selection: false).size
-    if total_order >= 0
-      total_order 
-    else
-      0
-    end
-  %>
   <br>
+  <%= link_to 'Order this meal', order_table_path(@table, menu: menu.id, selection: true), method: 'post', class: 'btn' %>
+  <%= link_to 'Cancel the order', order_table_path(@table, menu: menu.id, selection: false), method: 'post', class: 'btn' %>
+  <br>
+  Total Order: <%= Order.total(@order.where(menu: menu)) %>
+  <hr>
 <% end %>

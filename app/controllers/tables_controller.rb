@@ -8,7 +8,7 @@ class TablesController < ApplicationController
 
   def order
     table = Table.find(params[:id])
-    dish = Manu.find(params[:manu])
+    dish = Menu.find(params[:menu])
     order = Order.create(table: table, menu: dish, selection: params[:selection])
     redirect_to :back
   end
