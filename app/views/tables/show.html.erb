@@ -3,9 +3,10 @@
 <% @restaurant.menus.each do |menu| %>
   <%= menu.dish_name %>
   <br>
-  <%= link_to 'Order this meal', order_table_path(@table, menu: menu.id, selection: true), method: 'post', class: 'btn' %>
-  <%= link_to 'Cancel the order', order_table_path(@table, menu: menu.id, selection: false), method: 'post', class: 'btn' %>
+  <%= link_to 'Order this meal', order_table_path(@table, menu: menu.id, selection: 'order'), method: 'post', class: 'btn' %>
+  <%= link_to 'Cancel the order', order_table_path(@table, menu: menu.id, selection: 'disorder'), method: 'post', class: 'btn' %>
   <br>
-  Total Order: <%= Order.total(@order.where(menu: menu)) %>
+  <% binding.pry %>
+
   <hr>
 <% end %>

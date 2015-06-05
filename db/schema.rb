@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604112036) do
+ActiveRecord::Schema.define(version: 20150605094333) do
 
   create_table "menus", force: :cascade do |t|
     t.string   "dish_name"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150604112036) do
   create_table "orders", force: :cascade do |t|
     t.integer "menu_id"
     t.integer "table_id"
-    t.boolean "selection"
+    t.integer "quantity"
   end
 
   create_table "restaurants", force: :cascade do |t|
