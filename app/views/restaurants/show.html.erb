@@ -1,14 +1,24 @@
-<h2><%= @restaurant.name %></h2>
+<h2 class='text-center'><%= @restaurant.name %></h2>
 
 <h3>Manu</h3>
+<hr>
+<div class='row'>
 
-<% @restaurant.menus.each do |menu| %>
-  Dish: <strong><%= menu.dish_name %></strong>
-  <br>
-  Description: <%= menu.description %>
-  <hr>
-<% end %>
-
+    <% @restaurant.menus.each do |menu| %>
+    <div class='span4'>  
+      <ul class="thumbnails">
+        <li class="span4">
+          <a href="#" class="thumbnail">
+            <%= image_tag(menu.photo, size: '280x100') %>
+          <br>
+          Dish: <strong><%= menu.dish_name %></strong>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <% end %>
+</div>
+<br>
 <%= link_to 'New Menu', new_restaurant_menu_path(@restaurant), class: 'btn' %>
 
 <%= link_to 'Chef Page', chef_restaurant_path, class: 'btn' %>
@@ -18,4 +28,6 @@
   <%= link_to "Table NO. #{table.number}", restaurant_table_path(@restaurant, table) %>
 <% end %>
 <!-- Table list (temporary), will replaced by QR code access -->
+
+
 
