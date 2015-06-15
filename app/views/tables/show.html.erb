@@ -1,18 +1,26 @@
 <h3><%= @restaurant.name %>'s Table <%= @table.number %></h3>
 <hr>
 <% @restaurant.menus.each do |menu| %>
-  <%= menu.dish_name %>
-  <br>
-  <%= link_to 'Order this meal', order_table_path(@table, menu: menu.id, selection: 'order'), method: 'post', class: 'btn' %>
-  <%= link_to 'Cancel the order', order_table_path(@table, menu: menu.id, selection: 'disorder'), method: 'post', class: 'btn' %>
-  <br>
-  Total Order: 
-  <%= 
-    if @order.where(menu: menu).first == nil
-      0
-    else
-      @order.where(menu: menu).first.quantity 
-    end
-  %>
-  <hr>
+  <div class='span4'>  
+    <ul class="thumbnails">
+      <li class="span4">
+        <div class="thumbnail">
+          <%= image_tag(menu.photo, size: '280x100') %>
+        <h4 class='text-center'><%= menu.dish_name %></h4>
+        <%= link_to order_table_path(@table, menu: menu.id, selection: 'order'), method: 'post', class: 'btn btn-success' do %>
+          <i class = 'icon-ok'></i><span> Order</span>
+        <% end %>
+        <%= link_to order_table_path(@table, menu: menu.id, selection: 'disorder'), method: 'post', class: 'btn btn-warning' do %>
+          <i class = 'icon-remove'></i><span> Cancel</span>
+        <% end %>
+          Total Order: 
+          <span class="badge badge-important">
+            <%= @order.where(menu: menu).first == nil ? 0 : @order.where(menu: menu).first.quantity %>
+          </span>
+        </div>
+      </li>
+    </ul>
+
+
+  </div>
 <% end %>
