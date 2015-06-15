@@ -6,10 +6,11 @@ class MenusController < ApplicationController
 
   def create
     @menu = Menu.new(strong_params)
-    @menu.restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @menu.restaurant = @restaurant
 
     if @menu.save
-      redirect_to restaurant_path(@menu.restaurant)
+      redirect_to restaurant_path(@restaurant)
     else
       render 'menus/new'
     end

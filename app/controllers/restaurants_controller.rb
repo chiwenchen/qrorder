@@ -1,6 +1,10 @@
 class RestaurantsController < ApplicationController
   def index
-    @restaurants = Restaurant.all
+    if params[:search]
+      @restaurants = Restaurant.find(:all, :conditions => ['title LIKE ?', "%#{params[:search]}%"])
+    else
+      @restaurants = Restaurant.all
+    end
   end
 
   def show
@@ -12,7 +16,6 @@ class RestaurantsController < ApplicationController
     @tables = @restaurant.tables
     @tables.each do |table|
       table.orders
-      binding.pry
     end
 
   end

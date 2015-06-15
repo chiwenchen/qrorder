@@ -1,1 +1,10 @@
 <%= @restaurant.name%>
+<br>
+<% @restaurant.tables.each do |table| %>
+  <% table.orders.each do |order| %>
+    Dish: <%= order.menu.dish_name %>
+    Table: <%= order.table.number %>
+    Quantity: <%= order.quantity %>
+    <hr>
+  <% end %>
+<% end %>

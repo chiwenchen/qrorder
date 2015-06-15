@@ -1,4 +1,4 @@
-<%= @restaurant.name %>'s Table <%= @table.number %>
+<h3><%= @restaurant.name %>'s Table <%= @table.number %></h3>
 <hr>
 <% @restaurant.menus.each do |menu| %>
   <%= menu.dish_name %>
@@ -6,7 +6,13 @@
   <%= link_to 'Order this meal', order_table_path(@table, menu: menu.id, selection: 'order'), method: 'post', class: 'btn' %>
   <%= link_to 'Cancel the order', order_table_path(@table, menu: menu.id, selection: 'disorder'), method: 'post', class: 'btn' %>
   <br>
-  <% binding.pry %>
-
+  Total Order: 
+  <%= 
+    if @order.where(menu: menu).first == nil
+      0
+    else
+      @order.where(menu: menu).first.quantity 
+    end
+  %>
   <hr>
 <% end %>
