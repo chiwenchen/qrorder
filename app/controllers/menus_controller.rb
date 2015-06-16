@@ -16,6 +16,13 @@ class MenusController < ApplicationController
     end
   end
 
+  def show
+    #{"action"=>"show", "controller"=>"menus", "restaurant_id"=>"1", "id"=>"1"}
+    @menu = Menu.find(params[:id])
+  end
+
+  private
+
   def strong_params
     params.require(:menu).permit(:dish_name, :description, :photo, :restaurant_id)
   end

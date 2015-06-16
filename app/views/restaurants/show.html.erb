@@ -8,11 +8,11 @@
     <div class='span4'>  
       <ul class="thumbnails">
         <li class="span4">
-          <a href="#" class="thumbnail">
+          <%= link_to restaurant_menu_path(@restaurant, menu), class: "thumbnail" do %>
             <%= image_tag(menu.photo, size: '280x100') %>
           <br>
           Dish: <strong><%= menu.dish_name %></strong>
-          </a>
+          <% end %>
         </li>
       </ul>
     </div>
