@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     member do
       get :chef
     end  
-    resources :menus, only: [:index, :new, :create, :show];
+    resources :menus, only: [:index, :new, :create, :show, :edit, :update];
     resources :tables, only: [:show];
   end 
 

@@ -1,4 +1,7 @@
 class MenusController < ApplicationController
+
+  before_action :retrive_item, only: [:show, :edit]
+
   def new
     @menu = Menu.new
     @restaurant = Restaurant.find(params[:restaurant_id])
@@ -16,14 +19,22 @@ class MenusController < ApplicationController
     end
   end
 
-  def show
-    #{"action"=>"show", "controller"=>"menus", "restaurant_id"=>"1", "id"=>"1"}
-    @menu = Menu.find(params[:id])
+  def show; end
+
+  def edit; end
+
+  def update
+    binding.pry
   end
 
   private
 
   def strong_params
     params.require(:menu).permit(:dish_name, :description, :photo, :restaurant_id)
+  end
+
+  def retrive_item
+    #{"action"=>"edit", "controller"=>"menus", "restaurant_id"=>"1", "id"=>"1"}
+    @menu = Menu.find(params[:id])
   end
 end
