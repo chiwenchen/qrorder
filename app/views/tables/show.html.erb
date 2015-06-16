@@ -13,9 +13,10 @@
         <%= link_to order_table_path(@table, menu: menu.id, selection: 'disorder'), method: 'post', class: 'btn btn-warning' do %>
           <i class = 'icon-remove'></i><span> Cancel</span>
         <% end %>
+
           Total Order: 
-          <span class="badge badge-<%= @order.exists?(menu: menu) ? 'important' : '' %>">
-            <%= @order.exists?(menu: menu) ? @order.where(menu: menu).first.quantity : 0 %>
+          <span class="badge badge-<%= session[:order][menu.id.to_s].nil? ? '' : 'important' %>">
+            <%= !session[:order][menu.id.to_s].nil? ? session[:order][menu.id.to_s] : 0 %>
           </span>
         </div>
       </li>

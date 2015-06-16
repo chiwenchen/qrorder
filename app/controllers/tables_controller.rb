@@ -2,26 +2,37 @@ class TablesController < ApplicationController
   def show
     @table = Table.find(params[:id])
     @restaurant = @table.restaurant
-    @order = Order.where(table: @table)
+    session[:order] = {}
+    @order = nil
+    session[:table] = @table.id
   end
 
 
   def order
-    table = Table.find(params[:id])
-    dish = Menu.find(params[:menu])
-    order = Order.find_by(menu_id: params[:menu], table_id: params[:id])
+    @table = Table.find(params[:id])
+    @restaurant = @table.restaurant
+    #dish = Menu.find(params[:menu])
+    @order = session[:order][params[:menu]]
 
     if params[:selection] == 'order'
-      if order.nil?
-        order = Order.new(menu_id: params[:menu], table_id: params[:id], quantity: 1)
+      if @order.nil?
+        session[:order][params[:menu]] = 1
       else
-        order.quantity += 1
+        session[:order][params[:menu]] += 1
       end
     elsif params[:selection] == 'disorder'
-        order.quantity -= 1 if !order.nil?
+        session[:order][params[:menu]] -= 1 if !@order.nil?
     end
-    Order.delete(order.id) if !order.nil? && order.quantity == 0 
-    order.save if !order.nil?
-    redirect_to :back
+
+    session[:order].delete(params[:menu]) if session[:order][params[:menu]] == 0 
+    render 'show'
+  end
+
+  def place_order
+    binding.pry
   end
 end
+
+# session[:table] = params[:id]
+# session[:order] = {[1,1]: 1}
+
