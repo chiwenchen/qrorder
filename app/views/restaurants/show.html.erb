@@ -25,7 +25,9 @@
 
 <h3>Tables</h3>
 <% @restaurant.tables.each do |table|%>
-  <%= link_to "Table NO. #{table.number}", restaurant_table_path(@restaurant, table) %>
+  <%= link_to restaurant_table_path(@restaurant, table), class: 'btn btn-default' do %>
+    <i class = 'icon-glass'></i><span> Table NO. <%= table.number%></span>
+  <% end %>
 <% end %>
 <!-- Table list (temporary), will replaced by QR code access -->
 
