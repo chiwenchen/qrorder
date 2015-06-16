@@ -1,4 +1,12 @@
 <h3><%= @restaurant.name %>'s Table <%= @table.number %></h3>
+<%= link_to 'Place Order', place_order_table_path(@table), method: 'post', class: 'btn btn-success' %>
+<% if params[:show_order] == nil || params[:show_order] == 'false' %>
+  <%= link_to 'Show Orderd Dishes', restaurant_table_path(@restaurant, @table, show_order: 'true'), class: 'btn btn-warning' %>
+<% elsif params[:show_order] == 'true' %>
+  <%= link_to 'Close', restaurant_table_path(@restaurant, @table, show_order: 'false'), class: 'btn btn-danger' %>
+  <%= render 'show_order' %>
+<% end %>
+
 <hr>
 <% @restaurant.menus.each do |menu| %>
   <div class='span4'>  
@@ -21,7 +29,6 @@
         </div>
       </li>
     </ul>
-
-
   </div>
 <% end %>
+

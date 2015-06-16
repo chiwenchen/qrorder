@@ -10,9 +10,10 @@ Rails.application.routes.draw do
     resources :tables, only: [:show];
   end 
 
-  resources :tables, only: [:show] do
+  resources :tables, only: [:destroy] do
     member do
-      post :order 
+      post :order;
+      post :place_order;
     end
   end
 

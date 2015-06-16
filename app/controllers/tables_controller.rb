@@ -20,8 +20,8 @@ class TablesController < ApplicationController
       else
         session[:order][params[:menu]] += 1
       end
-    elsif params[:selection] == 'disorder'
-        session[:order][params[:menu]] -= 1 if !@order.nil?
+    else
+      session[:order][params[:menu]] -= 1 if !@order.nil?
     end
 
     session[:order].delete(params[:menu]) if session[:order][params[:menu]] == 0 
@@ -29,7 +29,14 @@ class TablesController < ApplicationController
   end
 
   def place_order
-    binding.pry
+    table = Table.find(params[:id])
+    restaurant = table.restaurant
+    session[:order].each do |menu, qty|
+      Order.create(table_id: session[:table], menu_id: menu, quantity: qty)
+    end
+    session[:order] = {}
+    flash[:success] = "You placed a order"
+    redirect_to restaurant_table_path(restaurant, table)
   end
 end
 
