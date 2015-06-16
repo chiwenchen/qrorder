@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
 
-  before_action :retrive_item, only: [:show, :edit]
+  before_action :retrive_item, only: [:show, :edit, :update]
 
   def new
     @menu = Menu.new
@@ -13,6 +13,7 @@ class MenusController < ApplicationController
     @menu.restaurant = @restaurant
 
     if @menu.save
+      flash[:success] = "You Add a new dish: #{@menu.dish_name} "
       redirect_to restaurant_path(@restaurant)
     else
       render 'menus/new'
@@ -21,10 +22,17 @@ class MenusController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @restaurant = Restaurant.find(params[:restaurant_id])
+  end
 
   def update
-    binding.pry
+    if @menu.update(strong_params)
+      flash[:success] = "You Updated dish: #{@menu.dish_name} "
+      redirect_to restaurant_path(params[:restaurant_id])
+    else
+      render 'edit'
+    end
   end
 
   private

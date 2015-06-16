@@ -1,13 +1,5 @@
+<div class='text-center form'>
 <h2>Add A New Dish</h2>
-<%= form_for [@restaurant, @menu] do |f| %>
-  <%= f.label :dish_name %>
-  <%= f.text_field :dish_name %>
-  <br>
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  <br>
-  <%= f.label :photo %>
-  <%= f.url_field :photo %>
-  <br>
-  <%= f.submit 'Create this Menu' %>
-<% end %>
+
+<%= render 'form', button: 'Create this Dish' %>
+<div>
