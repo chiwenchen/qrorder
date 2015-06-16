@@ -14,8 +14,8 @@
           <i class = 'icon-remove'></i><span> Cancel</span>
         <% end %>
           Total Order: 
-          <span class="badge badge-important">
-            <%= @order.where(menu: menu).first == nil ? 0 : @order.where(menu: menu).first.quantity %>
+          <span class="badge badge-<%= @order.exists?(menu: menu) ? 'important' : '' %>">
+            <%= @order.exists?(menu: menu) ? @order.where(menu: menu).first.quantity : 0 %>
           </span>
         </div>
       </li>

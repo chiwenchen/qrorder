@@ -17,15 +17,11 @@ class TablesController < ApplicationController
       else
         order.quantity += 1
       end
-    else
-      if order.nil?
-        order = Order.new(menu_id: params[:menu], table_id: params[:id], quantity: 0)
-      else
-        order.quantity -= 1
-      end
+    elsif params[:selection] == 'disorder'
+        order.quantity -= 1 if !order.nil?
     end
-    order.quantity = 0 if order.quantity < 0
-    order.save
+    Order.delete(order.id) if !order.nil? && order.quantity == 0 
+    order.save if !order.nil?
     redirect_to :back
   end
 end
