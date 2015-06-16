@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get :chef
     end  
     resources :menus, only: [:index, :new, :create, :show, :edit, :update];
-    resources :tables, only: [:show];
+    resources :tables, only: [:show, :create];
   end 
 
   resources :tables, only: [:destroy] do

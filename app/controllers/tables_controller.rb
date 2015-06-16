@@ -1,10 +1,17 @@
 class TablesController < ApplicationController
+
   def show
     @table = Table.find(params[:id])
     @restaurant = @table.restaurant
     session[:order] = {}
     @order = nil
     session[:table] = @table.id
+  end
+
+  def create
+    length = Table.where(restaurant_id: params[:restaurant_id]).length  
+    @table = Table.create(restaurant_id: params[:restaurant_id], number: length + 1 )
+    redirect_to restaurant_path(params[:restaurant_id])
   end
 
 

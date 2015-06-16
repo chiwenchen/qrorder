@@ -29,6 +29,8 @@
     <i class = 'icon-glass'></i><span> Table NO. <%= table.number%></span>
   <% end %>
 <% end %>
+<br><br>
+<span><%= link_to 'Add a new table', restaurant_tables_path(@restaurant), method:'post', class: 'btn btn-success' %></span>
 <!-- Table list (temporary), will replaced by QR code access -->
 
 
