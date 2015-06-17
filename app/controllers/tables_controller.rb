@@ -37,7 +37,11 @@ class TablesController < ApplicationController
     end
 
     session[:order].delete(params[:menu]) if session[:order][params[:menu]] == 0 
-    render 'show'
+    #render 'show'
+    respond_to do |format|
+      format.html {render 'show'}
+      format.js {render 'order.js.erb'}
+    end
   end
 
   def place_order

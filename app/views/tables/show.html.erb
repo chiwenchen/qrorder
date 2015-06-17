@@ -16,16 +16,18 @@
         <div class="thumbnail">
           <%= image_tag(menu.photo, size: '280x100') %>
         <h4 class='text-center'><%= menu.dish_name %></h4>
-        <%= link_to order_table_path(@table, menu: menu.id, selection: 'order'), method: 'post', class: 'btn btn-success' do %>
+        <%= link_to order_table_path(@table, menu: menu.id, selection: 'order'), method: 'post', remote: true, class: 'btn btn-success' do %>
           <i class = 'icon-ok'></i><span> Order</span>
         <% end %>
-        <%= link_to order_table_path(@table, menu: menu.id, selection: 'disorder'), method: 'post', class: 'btn btn-warning' do %>
+        <%= link_to order_table_path(@table, menu: menu.id, selection: 'disorder'), method: 'post',remote: true, class: 'btn btn-warning' do %>
           <i class = 'icon-remove'></i><span> Cancel</span>
         <% end %>
 
-          Total Order: 
-          <span class="badge badge-<%= session[:order][menu.id.to_s].nil? ? '' : 'important' %>">
-            <%= !session[:order][menu.id.to_s].nil? ? session[:order][menu.id.to_s] : 0 %>
+          Total Order:
+          <span id='table_<%= session[:table] %>_menu_<%= menu.id %>'>
+            <span class='badge badge-<%= session[:order][menu.id.to_s].nil? ? '' : 'important' %>'> 
+              <%= !session[:order][menu.id.to_s].nil? ? session[:order][menu.id.to_s] : 0 %>
+            </span>
           </span>
         </div>
       </li>
