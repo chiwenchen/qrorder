@@ -14,6 +14,11 @@ class TablesController < ApplicationController
     redirect_to restaurant_path(params[:restaurant_id])
   end
 
+  def destroy
+    Table.delete(Table.where(restaurant_id: params[:id]).last.id)
+    redirect_to restaurant_path(params[:id])
+  end
+
 
   def order
     @table = Table.find(params[:id])
