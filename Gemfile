@@ -31,6 +31,8 @@ gem 'rqrcode'
 
 gem 'bootstrap-sass', '~> 2.3.2.1'
 
+gem 'bootstrap_form'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

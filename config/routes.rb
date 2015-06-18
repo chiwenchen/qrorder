@@ -2,10 +2,12 @@ Rails.application.routes.draw do
 
   root 'restaurants#index'
 
-  get '/register', to: 'user#new'
-  get 'login', to: 'session#new'
-  post 'login', to: 'session#create'
-  get 'logout', to: 'session#destroy'
+  get '/register', to: 'users#new'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy'
+
+  resources :users, only: [:create]
 
   resources :restaurants, only: [:index, :show] do
     member do
