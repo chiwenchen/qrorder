@@ -1,4 +1,4 @@
-<%= @restaurant.name%>
+<h2><%= @restaurant.name%></h2>
 <% all_orders = Order.where({table: @restaurant.tables.each {|table| table }}) %>
 <% all_orders.order(:created_at) %>
 <table class="table table-striped" >

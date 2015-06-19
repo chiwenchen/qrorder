@@ -74,3 +74,15 @@ admin = User.create(
   role: "Admin"
   )
 
+admin = User.create(
+  name: 'otto',
+  password: '123',
+  role: "Manager"
+  )
+
+admin = User.create(
+  name: 'kim',
+  password: '123',
+  role: "Chef"
+  )
+
