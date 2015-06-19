@@ -4,11 +4,12 @@
     <a class="brand" href="#">Order System</a>
     <ul class="nav">
       <li><%= link_to 'Restaurants', root_path%></li>
-      <li class='pull-right'><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
+      <!--<li><a href="#">Link</a></li> -->
+      <!-- <li><a href="#">Link</a></li> -->
     </ul>
 
     <span class='pull-right'>
+      <span><%= link_to 'Login', login_path, class: 'btn btn-success' %></span>      
       <span><%= link_to 'Register', register_path, class: 'btn btn-primary' %></span>
     </span>
 
