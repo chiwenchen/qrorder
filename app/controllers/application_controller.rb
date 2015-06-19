@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def my_restaurant
-    restaurant ||= current_user.restaurant.id.to_s if session[:user_id]
+    restaurant ||= current_user.restaurant if session[:user_id]
     #return user's restaurant's id
   end
 
@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
   def require_manager
     if (my_role != "Admin" && my_role != "Manager")
       flash[:warning] = "Only Manager can do this"
-      redirect_to restaurant_path(current_user.restaurant.id)
+      redirect_to restaurant_path(current_user.restaurant)
     end
   end
 
@@ -75,7 +75,7 @@ class ApplicationController < ActionController::Base
 
   def to_my_restaurant
     flash[:success] = "Here is your place"
-    redirect_to restaurant_path(current_user.restaurant.id)
+    redirect_to restaurant_path(current_user.restaurant)
   end
 
   def send_my_back

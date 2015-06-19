@@ -13,11 +13,11 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find_by(slug: params[:id])
   end
 
   def chef
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find_by(slug: params[:id])
     @tables = @restaurant.tables
     @tables.each do |table|
       table.orders

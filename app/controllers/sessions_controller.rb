@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         if current_user.role == 'Admin'
           redirect_to restaurants_path
         else
-          redirect_to restaurant_path(user.restaurant.id)
+          redirect_to restaurant_path(user.restaurant)
         end
       else
         flash[:error] = 'Your username or password is wrong!!'
