@@ -1,5 +1,7 @@
 class TablesController < ApplicationController
 
+  before_action :require_manager, only:[:create, :destroy]
+
   def show
     @table = Table.find(params[:id])
     @restaurant = @table.restaurant

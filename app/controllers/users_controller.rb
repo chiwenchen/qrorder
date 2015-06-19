@@ -12,8 +12,9 @@ class UsersController < ApplicationController
     @user = User.new(strong_params)
 
     if @user.save
+      session[:user_id] = @user.id
       flash[:success] = 'You register a new role'
-      redirect_to root_path
+      send_my_back
     else
       render 'new'
     end

@@ -19,9 +19,11 @@
     <% end %>
 </div>
 <br>
-<%= link_to 'New Menu', new_restaurant_menu_path(@restaurant), class: 'btn' %>
 
-<%= link_to 'Chef Page', chef_restaurant_path, class: 'btn' %>
+<% if admin? %>
+  <%= link_to 'New Menu', new_restaurant_menu_path(@restaurant), class: 'btn' %>
+<% end %>
+
 
 <h3>Tables</h3>
 <% @restaurant.tables.each do |table|%>

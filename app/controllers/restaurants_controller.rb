@@ -1,4 +1,9 @@
 class RestaurantsController < ApplicationController
+
+  before_action :require_user, only: [:show]
+  before_action :require_chef, only: [:chef]
+  before_action :require_admin, only: [:index]
+  #before_action :my_restaurant?, only: [:show, :chef]
   def index
     if params[:search]
       @restaurants = Restaurant.find(:all, :conditions => ['title LIKE ?', "%#{params[:search]}%"])

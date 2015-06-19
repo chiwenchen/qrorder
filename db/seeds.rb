@@ -63,19 +63,14 @@ tom_kha_kai = Menu.create(
   photo: '/img/tom-kha-kai.jpg', 
   restaurant: asia_food)
 
-
-veg_salad = Menu.create(
-  dish_name: 'Vegetarian Salad', 
-  description: 'super fresh salad for morning', 
-  restaurant: salad)
-
 TB1 = Table.create(
   restaurant: asia_food,
   number: 1,
   )
 
-TB2 = Table.create(
-  restaurant: asia_food,
-  number: 2,
+admin = User.create(
+  name: 'admin',
+  password: 'admin',
+  role: "Admin"
   )
 

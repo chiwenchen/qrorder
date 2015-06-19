@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'restaurants#index'
+
+  #root 'restaurants#index'
+  root to: "sessions#new"
 
   get '/register', to: 'users#new'
   get 'login', to: 'sessions#new'

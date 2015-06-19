@@ -1,6 +1,8 @@
 class MenusController < ApplicationController
 
   before_action :retrive_item, only: [:show, :edit, :update]
+  before_action :require_manager, only: [:new, :create, :edit, :update]
+  before_action :my_restaurant?, only: [:new, :create, :edit, :update]  
 
   def new
     @menu = Menu.new
