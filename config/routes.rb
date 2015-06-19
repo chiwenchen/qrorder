@@ -26,4 +26,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :orders do
+    member do
+      patch :change_order_status;  
+    end
+  end
+
 end

@@ -8,6 +8,7 @@
       <th>Quantity</th>
       <th>Table</th>
       <th>Orderd at</th>
+      <th>Status</th>
     </tr>
   </thead>  
   <% all_orders.each do |order|%>
@@ -16,6 +17,13 @@
       <td><%= order.quantity %></td>
       <td><%= order.table.number %></td>
       <td><%= order.order_time %></td>
+      <td>
+        <% if order.status == false %>
+          <%= link_to 'Ready', change_order_status_order_path(order), method: 'patch', class: 'btn btn-primary' %>
+        <% else %>
+          Serverd
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>

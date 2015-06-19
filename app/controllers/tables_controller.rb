@@ -50,12 +50,14 @@ class TablesController < ApplicationController
     table = Table.find(params[:id])
     restaurant = table.restaurant
     session[:order].each do |menu, qty|
-      Order.create(table_id: session[:table], menu_id: menu, quantity: qty)
+      Order.create(table_id: session[:table], menu_id: menu, quantity: qty, status: false)
     end
     session[:order] = {}
     flash[:success] = "You placed a order"
     redirect_to restaurant_table_path(restaurant, table)
   end
+
+
 end
 
 # session[:table] = params[:id]
