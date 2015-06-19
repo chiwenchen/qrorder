@@ -1,3 +1,5 @@
+<%= render "/share/form_errors", obj: @menu %>
+
 <%= form_for [@restaurant, @menu] do |f| %>
   <%= f.label :dish_name %>
   <%= f.text_field :dish_name %>

@@ -11,13 +11,15 @@ class TablesController < ApplicationController
   end
 
   def create
-    length = Table.where(restaurant_id: params[:restaurant_id]).length  
-    @table = Table.create(restaurant_id: params[:restaurant_id], number: length + 1 )
+    restaurant = Restaurant.find_by(slug: params[:restaurant_id])
+    length = Table.where(restaurant_id: restaurant.id).length  
+    @table = Table.create(restaurant_id: restaurant.id, number: length + 1 )
     redirect_to restaurant_path(params[:restaurant_id])
   end
 
   def destroy
-    Table.delete(Table.where(restaurant_id: params[:id]).last.id)
+    restaurant = Restaurant.find_by(slug: params[:id])
+    Table.delete(Table.where(restaurant_id: restaurant.id).last.id)
     redirect_to restaurant_path(params[:id])
   end
 

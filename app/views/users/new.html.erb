@@ -1,13 +1,4 @@
-<% if @user.errors.any? %>
-  <div class = 'alert alert-error'>
-    <h5>Here are some missing items:</h5>
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render "/share/form_errors", obj: @user %>
 
 <div class='form'>
   <h2> Register a New Role </h2>

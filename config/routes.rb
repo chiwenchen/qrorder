@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create]
 
-  resources :restaurants, only: [:index, :show] do
+  resources :restaurants, only: [:index, :show, :new, :create] do
     member do
       get :chef
     end  
