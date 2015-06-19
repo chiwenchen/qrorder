@@ -17,11 +17,11 @@
       <td><%= order.quantity %></td>
       <td><%= order.table.number %></td>
       <td><%= order.order_time %></td>
-      <td>
+      <td id='order_<%= order.id %>_status'>
         <% if order.status == false %>
-          <%= link_to 'Ready', change_order_status_order_path(order), method: 'patch', class: 'btn btn-primary' %>
+          <%= link_to 'Ready', change_order_status_order_path(order), method: 'patch', remote: true, class: 'btn btn-primary' %>
         <% else %>
-          Serverd
+          <span>Served</span>
         <% end %>
       </td>
     </tr>
