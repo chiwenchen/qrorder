@@ -6,12 +6,12 @@ class MenusController < ApplicationController
 
   def new
     @menu = Menu.new
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Restaurant.find_by(slug: params[:restaurant_id])
   end
 
   def create
     @menu = Menu.new(strong_params)
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Restaurant.find_by(slug: params[:restaurant_id])
     @menu.restaurant = @restaurant
 
     if @menu.save
@@ -25,13 +25,15 @@ class MenusController < ApplicationController
   def show; end
 
   def edit
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    binding.pry
+    @restaurant = Restaurant.find_by(slug: params[:restaurant_id])
   end
 
   def update
+    @restaurant = Restaurant.find_by(slug: params[:restaurant_id])
     if @menu.update(strong_params)
       flash[:success] = "You Updated dish: #{@menu.dish_name} "
-      redirect_to restaurant_path(params[:restaurant_id])
+      redirect_to restaurant_path(@restaurant)
     else
       render 'edit'
     end

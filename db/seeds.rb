@@ -71,18 +71,21 @@ TB1 = Table.create(
 admin = User.create(
   name: 'admin',
   password: 'admin',
-  role: "Admin"
+  role: "Admin",
+  restaurant: asia_food,
   )
 
 admin = User.create(
   name: 'otto',
   password: '123',
-  role: "Manager"
+  role: "Manager",
+  restaurant: asia_food,
   )
 
 admin = User.create(
   name: 'kim',
   password: '123',
-  role: "Chef"
+  role: "Chef",
+  restaurant: asia_food,
   )
 
